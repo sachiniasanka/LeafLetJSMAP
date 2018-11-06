@@ -1,0 +1,128 @@
+<!-- Content Header (Page header) -->
+
+<br>
+
+
+
+<div id="map" (click)="circleClick" ></div>
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="content-header,col-lg-6">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Manage Locations</h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Manage Locations</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 col-12">
+
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Location Information</h3>
+
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body"  >
+            <div class="row">
+              <div class="col col-12"  ng-controller="myCtrl">
+                <form #frmLocations="ngForm" (ngSubmit)="saveLocation()">
+                  <!--<p class="form-group">-->
+                    <!--<label for="txtId">Location ID</label>-->
+                    <!--<input [disabled]="manuallySelected" name="txtId" [(ngModel)]="selectedLocations.id" id="txtId"-->
+                           <!--class="form-control" placeholder={{defaultVal}}>-->
+                  <!--</p>-->
+
+                  <p class="form-group">
+                    <label for="txtLat">Location Lat</label>
+                    <input ng-model="name" name="txtLat" [(ngModel)]="selectedLocations.lat" id="txtLat" class="form-control" type="text" placeholder={{lati}}>
+                  </p>
+
+                  <p class="form-group">
+                    <label for="txtLng">Location Lng </label>
+                    <input name="txtLng" [(ngModel)]="selectedLocations.lng" id="txtLng"
+                           class="form-control" placeholder={{long}} >
+                  </p>
+
+                  <div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    &nbsp;
+                    <button (click)="clear()" type="button" class="btn btn-warning">Clear</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+      </div>
+      <div class="col-md-6 col-12">
+        <table class="table table-hover" style="background-color: white">
+          <thead style="background-color: black;color: white">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Latitudes</th>
+            <th scope="col">Longitudes</th>
+            <th scope="col"></th>
+
+          </tr>
+          </thead>
+          <tr *ngFor="let location of locations | paginate: { itemsPerPage: 7, currentPage: p }"
+              (click)="selectLocation(location)" [class.selected]="location==selectedLocations">
+            <td>{{location.id}}</td>
+            <td>{{location.lat}}</td>
+            <td>{{location.lng}}</td>
+            <td>
+              <i (click)="deleteLocation(location)" class="fa fa-trash fa-2x"></i>
+            </td>
+          </tr>
+
+
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="4">
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+<br>
+<br>

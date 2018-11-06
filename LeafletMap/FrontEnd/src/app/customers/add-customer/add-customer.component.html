@@ -1,0 +1,101 @@
+<!--&lt;!&ndash; Content Header (Page header) &ndash;&gt;-->
+<!--<div class="content-header">-->
+  <!--<div class="container-fluid">-->
+    <!--<div class="row mb-2">-->
+      <!--<div class="col-sm-6">-->
+        <!--<h1 class="m-0 text-dark"><marquee>Manage Customers</marquee></h1>-->
+      <!--</div>&lt;!&ndash; /.col &ndash;&gt;-->
+      <!--<div class="col-sm-6">-->
+        <!--<ol class="breadcrumb float-sm-right">-->
+          <!--<li class="breadcrumb-item"><a href="#">Home</a></li>-->
+          <!--<li class="breadcrumb-item active">Manage Customers</li>-->
+        <!--</ol>-->
+      <!--</div>&lt;!&ndash; /.col &ndash;&gt;-->
+    <!--</div>&lt;!&ndash; /.row &ndash;&gt;-->
+  <!--</div>&lt;!&ndash; /.container-fluid &ndash;&gt;-->
+<!--</div>-->
+<!--&lt;!&ndash; /.content-header &ndash;&gt;-->
+
+<!--&lt;!&ndash; Main content &ndash;&gt;-->
+<!--<section class="content">-->
+  <!--<div class="container-fluid">-->
+    <!--<div class="row">-->
+      <!--<div class="col-md-6 col-12">-->
+
+        <!--<div class="card card-primary">-->
+          <!--<div class="card-header">-->
+            <!--<h3 class="card-title">Customer Information</h3>-->
+
+          <!--</div>-->
+          <!--&lt;!&ndash; /.card-header &ndash;&gt;-->
+          <!--<div class="card-body">-->
+            <!--<div class="row">-->
+              <!--<div class="col col-12">-->
+                <!--<form #frmCustomers="ngForm" (ngSubmit)="updateCustomers()">-->
+                  <!--<p class="form-group">-->
+                    <!--<label for="txtId">Customer ID</label>-->
+                    <!--<input [disabled]="manuallySelected" name="txtId" [(ngModel)]="selectedCustomer.id" id="txtId"-->
+                           <!--class="form-control">-->
+                  <!--</p>-->
+
+                  <!--<p class="form-group">-->
+                    <!--<label for="txtName">Customer Name</label>-->
+                    <!--<input name="txtName" [(ngModel)]="selectedCustomer.name" id="txtName" class="form-control">-->
+                  <!--</p>-->
+
+                  <!--<p class="form-group">-->
+                    <!--<label for="txtContact">Customer Age</label>-->
+                    <!--<input name="txtContact" [(ngModel)]="selectedCustomer.age" id="txtContact"-->
+                           <!--class="form-control">-->
+                  <!--</p>-->
+
+                  <!--<div>-->
+                    <!--<button type="submit" class="btn btn-primary">Save</button>-->
+                    <!--&nbsp;-->
+                    <!--<button (click)="clear()" type="button" class="btn btn-warning">Clear</button>-->
+                  <!--</div>-->
+                <!--</form>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash; /.card-body &ndash;&gt;-->
+        <!--</div>-->
+        <!--&lt;!&ndash; /.card &ndash;&gt;-->
+
+      <!--</div>-->
+      <!--<div class="col-md-6 col-12">-->
+        <!--<table class="table table-hover" style="background-color: white">-->
+          <!--<thead style="background-color: black;color: white">-->
+          <!--<tr>-->
+            <!--<th scope="col">ID</th>-->
+            <!--<th scope="col">Name</th>-->
+            <!--<th scope="col">Age</th>-->
+            <!--<th scope="col"></th>-->
+
+          <!--</tr>-->
+          <!--</thead>-->
+          <!--<tr *ngFor="let customer of customers | paginate: { itemsPerPage: 7, currentPage: p }"-->
+              <!--(click)="selectCustomer(customer)" [class.selected]="customer==selectedCustomer">-->
+            <!--<td>{{customer.id}}</td>-->
+            <!--<td>{{customer.name}}</td>-->
+            <!--<td>{{customer.age}}</td>-->
+            <!--<td>-->
+              <!--<i (click)="deleteCustomer(customer)" class="fa fa-trash fa-2x"></i>-->
+            <!--</td>-->
+          <!--</tr>-->
+
+
+          <!--</tbody>-->
+          <!--<tfoot>-->
+          <!--<tr>-->
+            <!--<td colspan="4">-->
+              <!--<pagination-controls (pageChange)="p = $event"></pagination-controls>-->
+            <!--</td>-->
+          <!--</tr>-->
+          <!--</tfoot>-->
+        <!--</table>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>&lt;!&ndash; /.container-fluid &ndash;&gt;-->
+<!--</section>-->
+
